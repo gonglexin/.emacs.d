@@ -27,8 +27,34 @@
 (menu-bar-mode -1)
 (if (display-graphic-p)
     (toggle-scroll-bar -1))
+
 ;; Theme
 (load-theme 'dracula t)
+
+;;;
+(defadvice linum-update-window (around linum-dynamic activate)
+  (let* ((w (length (number-to-string
+		     (count-lines (point-min) (point-max)))))
+	 (linum-format (concat "%" (number-to-string w) "d ")))
+    ad-do-it))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("f3d6a49e3f4491373028eda655231ec371d79d6d2a628f08d5aa38739340540b" default)))
+ '(linum-format (quote dynamic))
+ '(paradox-github-token t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:background "nil"))))
+ '(linum ((t (:background "color-235")))))
+(global-linum-mode t)
 
 ;; Mac
 (setq ns-function-modifier 'hyper)
@@ -113,4 +139,5 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-(custom-set-faces (if (not window-system) '(default ((t (:background "nil"))))))
+
+
