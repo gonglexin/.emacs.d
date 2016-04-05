@@ -4,3 +4,7 @@ eshell
 ido.last
 smex-items
 .cache
+projectile-bookmarks.eld
+rake.cache
+helm-doc.org
+recentf
