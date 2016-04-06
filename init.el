@@ -37,30 +37,18 @@
 		     (count-lines (point-min) (point-max)))))
 	 (linum-format (concat "%" (number-to-string w) "d ")))
     ad-do-it))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("f3d6a49e3f4491373028eda655231ec371d79d6d2a628f08d5aa38739340540b" default)))
- '(linum-format (quote dynamic))
- '(paradox-github-token t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:background "nil"))))
- '(linum ((t (:background "color-235")))))
+(custom-set-variables '(linum-format (quote dynamic))
+                      '(paradox-github-token t))
+(custom-set-faces '(default ((t (:background "nil"))))
+		  '(linum ((t (:background "color-235")))))
 (global-linum-mode t)
 
 ;; Mac
 (setq ns-function-modifier 'hyper)
 
-;;
+;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
 ;; replace buffer-menu with ibuffer
 ;(global-set-key (kbd "C-x C-b") 'ibuffer)
