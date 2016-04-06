@@ -51,7 +51,7 @@
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
 ;; replace buffer-menu with ibuffer
-;(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;;; avy
 ;(global-set-key (kbd "C-:") 'avy-goto-char)
@@ -93,6 +93,7 @@
 
 ;;; Programming
 (yas-global-mode 1)
+(require 'smartparens-config)
 
 ;;; Ruby
 
@@ -116,6 +117,7 @@
 
 ;;; Elixir
 (add-hook 'elixir-mode-hook 'alchemist-mode)
+
 
 ;; load every .el file inside ~/.emacs.d/modules/
 ; (mapc 'load (directory-files "~/.emacs.d/modules" t ".*\.el"))
