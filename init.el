@@ -5,7 +5,7 @@
 (require 'package)
 
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-			 ("melpa" . "https://melpa.org/packages/")))
+                         ("melpa" . "https://melpa.org/packages/")))
 
 (package-initialize)
 
@@ -34,14 +34,18 @@
 ;;;
 (defadvice linum-update-window (around linum-dynamic activate)
   (let* ((w (length (number-to-string
-		     (count-lines (point-min) (point-max)))))
-	 (linum-format (concat "%" (number-to-string w) "d ")))
+                      (count-lines (point-min) (point-max)))))
+          (linum-format (concat "%" (number-to-string w) "d ")))
     ad-do-it))
 (custom-set-variables '(linum-format (quote dynamic))
                       '(paradox-github-token t))
 (custom-set-faces '(default ((t (:background "nil"))))
-		  '(linum ((t (:background "color-235")))))
+                  '(linum ((t (:background "color-235")))))
 (global-linum-mode t)
+
+
+;;; Editor
+(editorconfig-mode 1)
 
 ;; Mac
 (setq ns-function-modifier 'hyper)
@@ -95,6 +99,13 @@
 (yas-global-mode 1)
 (require 'smartparens-config)
 
+;; Flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;;; HTML
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation
+
 ;;; Ruby
 
 ;(require 'chruby)
@@ -128,6 +139,3 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
-
-
-
