@@ -1,151 +1,55 @@
-;;; init.el --- Configuration entry point.
+;;; init.el --- Personal emacs configuration of Lexin Gong
+
+;; Copyright © 2016 Lexin Gong
 ;;
-;; Copyright (c) 2016 Lexin Gong
+;; Author: Lexin Gong <gonglexin@gmail.com>
+;; Maintainer: Lexin Gong <gonglexin@gmail.com>
+;; URL: http://www.github.com/gonglexin/emacs.d
 
-(require 'package)
+;; This file is not part of GNU Emacs.
 
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")))
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Personal Emacs configuration of Lexin Gong
+
+;;; Code:
+
+(setq package-enable-at-startup nil)
 (package-initialize)
 
-;(defun set-exec-path-from-shell-PATH ()
-;  (let ((path-from-shell
-;	 (replace-regexp-in-string "[[:space:]\n]*$" ""
-;				   (shell-command-to-string "$SHELL -l -c 'echo $PATH'"))))
-;    (setenv "PATH" path-from-shell)
-;    (setq exec-path (split-string path-from-shell path-separator))))
-					;(when (equal system-type 'darwin) (set-exec-path-from-shell-PATH))
-;(set-exec-path-from-shell-PATH)
+(require 'cask "/usr/local/Cellar/cask/0.7.4/cask.el")
+(cask-initialize)
 
-;(require 'exec-path-from-shell)
-;(when (memq window-system '(mac ns x))
-;  (exec-path-from-shell-copy-env "PATH")
-;(exec-path-from-shell-initialize)
+(require 'pallet)
+(pallet-mode t)
 
-;;; UI
-(menu-bar-mode -1)
-(if (display-graphic-p)
-    (toggle-scroll-bar -1))
+(add-to-list 'load-path (expand-file-name "core" user-emacs-directory))
 
-;; Theme
-(load-theme 'zenburn t)
+(require 'core-ui)
+(require 'core-editor)
+(require 'core-keybindings)
+(require 'core-projectile)
+(require 'core-helm)
+(require 'core-completion)
+(require 'core-programming)
+(require 'core-ruby)
+(require 'core-elixir)
+(require 'core-html)
+(require 'core-custom)
 
-;;;
-(defadvice linum-update-window (around linum-dynamic activate)
-  (let* ((w (length (number-to-string
-                      (count-lines (point-min) (point-max)))))
-          (linum-format (concat "%" (number-to-string w) "d ")))
-    ad-do-it))
-(custom-set-variables '(linum-format (quote dynamic))
-                      '(paradox-github-token t))
-(custom-set-faces '(default ((t (:background "nil"))))
-                  '(linum ((t (:background "color-235")))))
-(global-linum-mode t)
+(provide 'init)
 
-
-;;; Editor
-(editorconfig-mode 1)
-
-;; Mac
-(setq ns-function-modifier 'hyper)
-
-;; Magit
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
-
-;; replace buffer-menu with ibuffer
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
-;;; avy
-;(global-set-key (kbd "C-:") 'avy-goto-char)
-;(global-set-key (kbd "C-'") 'avy-goto-char-2)
-;(global-set-key (kbd "M-g f") 'avy-goto-line)
-;(global-set-key (kbd "M-g w") 'avy-goto-word-1)
-(global-set-key (kbd "M-g e") 'avy-goto-word-0)
-
-(key-chord-mode t)
-(key-chord-define-global "jj" 'avy-goto-word-1)
-(key-chord-define-global "jl" 'avy-goto-line)
-(key-chord-define-global "jk" 'avy-goto-char)
-(avy-setup-default)
-
-;;; Helm
-(require 'helm-config)
-(helm-mode 1)
-(helm-autoresize-mode 1)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-(global-set-key (kbd "C-x b") 'helm-mini)
-(setq helm-mode-fuzzy-match t
-      helm-completion-in-region-fuzzy-match t)
-(setq helm-buffers-fuzzy-matching t
-      helm-recentf-fuzzy-match    t
-      helm-locate-fuzzy-match     t
-      helm-M-x-fuzzy-match        t
-      helm-semantic-fuzzy-match   t
-      helm-imenu-fuzzy-match      t
-      helm-apropos-fuzzy-match    t
-      helm-lisp-fuzzy-completion  t)
-
-;;; Enable company-mode
-(add-hook 'after-init-hook 'global-company-mode)
-
-(projectile-global-mode)
-
-
-;;; Programming
-(yas-global-mode 1)
-(require 'smartparens-config)
-(add-hook 'ruby-mode-hook #'smartparens-mode)
-(add-hook 'elixir-mode-hook #'smartparens-mode)
-
-;; Flycheck
-(add-hook 'after-init-hook #'global-flycheck-mode)
-
-;;; HTML
-(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation
-
-;;; Ruby
-
-;(require 'chruby)
-;(add-hook 'ruby-mode-hook #'chruby-use-corresponding)
-
-(setq ruby-insert-encoding-magic-comment nil)
-(add-hook 'ruby-mode-hook 'robe-mode)
-(eval-after-load 'company
-  '(push 'company-robe company-backends))
-
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
-
-(require 'projectile-rails)
-(define-key projectile-rails-mode-map (kbd "s-m")   'projectile-rails-find-model)
-(define-key projectile-rails-mode-map (kbd "s-c")   'projectile-rails-find-controller)
-(define-key projectile-rails-mode-map (kbd "s-v")   'projectile-rails-find-view)
-(define-key projectile-rails-mode-map (kbd "s-RET") 'projectile-rails-goto-file-at-point)
-(define-key projectile-rails-mode-map (kbd "C-c g")  projectile-rails-mode-goto-map)
-
-
-;;; Elixir
-(add-hook 'elixir-mode-hook 'alchemist-mode)
-(sp-with-modes '(elixir-mode)
-  (sp-local-pair "fn" "end"
-    :when '(("SPC" "RET"))
-    :actions '(insert navigate))
-  (sp-local-pair "do" "end"
-    :when '(("SPC" "RET"))
-    :post-handlers '(sp-ruby-def-post-handler)
-    :actions '(insert navigate)))
-
-
-;; load every .el file inside ~/.emacs.d/modules/
-; (mapc 'load (directory-files "~/.emacs.d/modules" t ".*\.el"))
-
-
-;;; store all backup and autosave files in the tmp dir
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+;;; init.el ends here
