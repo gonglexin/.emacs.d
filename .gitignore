@@ -9,3 +9,4 @@ rake.cache
 helm-doc.org
 recentf
 .cask
+*.elc
