@@ -29,7 +29,7 @@
     (toggle-scroll-bar -1))
 
 ;; Theme
-(load-theme 'dracula t)
+(load-theme 'zenburn t)
 
 ;;;
 (defadvice linum-update-window (around linum-dynamic activate)
@@ -98,6 +98,8 @@
 ;;; Programming
 (yas-global-mode 1)
 (require 'smartparens-config)
+(add-hook 'ruby-mode-hook #'smartparens-mode)
+(add-hook 'elixir-mode-hook #'smartparens-mode)
 
 ;; Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -128,6 +130,14 @@
 
 ;;; Elixir
 (add-hook 'elixir-mode-hook 'alchemist-mode)
+(sp-with-modes '(elixir-mode)
+  (sp-local-pair "fn" "end"
+    :when '(("SPC" "RET"))
+    :actions '(insert navigate))
+  (sp-local-pair "do" "end"
+    :when '(("SPC" "RET"))
+    :post-handlers '(sp-ruby-def-post-handler)
+    :actions '(insert navigate)))
 
 
 ;; load every .el file inside ~/.emacs.d/modules/
