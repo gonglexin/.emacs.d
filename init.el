@@ -47,7 +47,7 @@
 (require 'core-programming)
 (require 'core-ruby)
 (require 'core-elixir)
-(require 'core-html)
+(require 'core-web)
 (require 'core-custom)
 
 (provide 'init)
