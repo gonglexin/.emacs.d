@@ -33,51 +33,34 @@
                          ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
-(unless (package-installed-p 'alchemist)
-  (package-install 'alchemist))
-(unless (package-installed-p 'avy)
-  (package-install 'avy))
-(unless (package-installed-p 'company)
-  (package-install 'company))
-(unless (package-installed-p 'editorconfig)
-  (package-install 'editorconfig))
-(unless (package-installed-p 'elixir-mode)
-  (package-install 'elixir-mode))
-(unless (package-installed-p 'emmet-mode)
-  (package-install 'emmet-mode))
-(unless (package-installed-p 'flycheck)
-  (package-install 'flycheck))
-(unless (package-installed-p 'flycheck-elixir)
-  (package-install 'flycheck-elixir))
-(unless (package-installed-p 'helm)
-  (package-install 'helm))
-(unless (package-installed-p 'helm-ag)
-  (package-install 'helm-ag))
-(unless (package-installed-p 'helm-projectile)
-  (package-install 'helm-projectile))
-(unless (package-installed-p 'inf-ruby)
-  (package-install 'inf-ruby))
-(unless (package-installed-p 'key-chord)
-  (package-install 'key-chord))
-(unless (package-installed-p 'magit)
-  (package-install 'magit))
-(unless (package-installed-p 'markdown-mode)
-  (package-install 'markdown-mode))
-(unless (package-installed-p 'projectile)
-  (package-install 'projectile))
-(unless (package-installed-p 'projectile-rails)
-  (package-install 'projectile-rails))
-(unless (package-installed-p 'restclient)
-  (package-install 'restclient))
-(unless (package-installed-p 'smartparens)
-  (package-install 'smartparens))
-(unless (package-installed-p 'web-mode)
-  (package-install 'web-mode))
-(unless (package-installed-p 'yasnippet)
-  (package-install 'yasnippet))
-(unless (package-installed-p 'zenburn-theme)
-  (package-install 'zenburn-theme))
+(setq package-list  '(alchemist
+                      avy
+                      company
+                      editorconfig
+                      elixir-mode
+                      emmet-mode
+                      flycheck
+                      flycheck-elixir
+                      helm
+                      helm-ag
+                      helm-projectile
+                      inf-ruby
+                      key-chord
+                      magit
+                      markdown-mode
+                      paradox
+                      projectile
+                      projectile-rails
+                      restclient
+                      smartparens
+                      web-mode
+                      yasnippet
+                      zenburn-theme
+                      ))
 
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 (add-to-list 'load-path (expand-file-name "core" user-emacs-directory))
 
