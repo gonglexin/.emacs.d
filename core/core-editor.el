@@ -24,4 +24,7 @@
 (key-chord-mode t)
 (avy-setup-default)
 
+;; Always load newest byte code
+(setq load-prefer-newer t)
+
 (provide 'core-editor)

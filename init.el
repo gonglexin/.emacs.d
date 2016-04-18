@@ -33,6 +33,11 @@
                          ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
+;; update the package metadata
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; package dependencies
 (setq package-list  '(alchemist
                       avy
                       company
