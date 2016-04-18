@@ -8,6 +8,5 @@ projectile-bookmarks.eld
 rake.cache
 helm-doc.org
 recentf
-.cask
 *.elc
 games
