@@ -16,13 +16,6 @@ To install, clone this repo to `~/.emacs.d`, i.e. ensure that the `init.el` cont
 git clone https://github.com/gonglexin/emacs.d.git ~/.emacs.d
 ```
 
-To install all the dependencies:
-
-```shell
-$ cd ~/.emacs.d
-$ cask install
-```
-
 ## License
 
 Copyright © 2016 Lexin Gong
