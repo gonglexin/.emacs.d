@@ -1,13 +1,12 @@
 [![License GPL 3][badge-license]](http://www.gnu.org/licenses/gpl-3.0.txt)
 
-# My personal emacs settings
+# My personal Emacs settings
 
 This settings learned a lot from [Prelude](https://github.com/bbatsov/prelude) and [Tonini's settings](https://github.com/tonini/emacs.d)
 
 ## Requirements
 
 * Emacs 24 or greater.
-* [Cask](https://github.com/cask/cask) to manage dependencies.
 
 ## Installation
 
