@@ -29,6 +29,7 @@
 (depends-on "projectile-rails")
 (depends-on "restclient")
 (depends-on "s")
+(depends-on "shut-up")
 (depends-on "smartparens")
 (depends-on "smex")
 (depends-on "web-mode")
