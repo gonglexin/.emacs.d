@@ -37,31 +37,31 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; package dependencies
-(setq package-list  '(alchemist
-                      avy
-                      company
-                      editorconfig
-                      elixir-mode
-                      emmet-mode
-                      flycheck
-                      flycheck-elixir
-                      helm
-                      helm-ag
-                      helm-projectile
-                      inf-ruby
-                      key-chord
-                      magit
-                      markdown-mode
-                      paradox
-                      projectile
-                      projectile-rails
-                      restclient
-                      smartparens
-                      web-mode
-                      yasnippet
-                      zenburn-theme
-                      ))
+(defvar package-list
+  '(alchemist
+    avy
+    company
+    editorconfig
+    elixir-mode
+    emmet-mode
+    flycheck
+    flycheck-elixir
+    helm
+    helm-ag
+    helm-projectile
+    inf-ruby
+    key-chord
+    magit
+    markdown-mode
+    paradox
+    projectile
+    projectile-rails
+    restclient
+    smartparens
+    web-mode
+    yasnippet
+    zenburn-theme)
+  "A list of packages to ensure are installed at launch.")
 
 (dolist (package package-list)
   (unless (package-installed-p package)
