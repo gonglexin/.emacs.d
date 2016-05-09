@@ -1,12 +1,14 @@
+async-bytecomp.log
 auto-save-list
 elpa
 eshell
+games
 ido.last
 smex-items
 .cache
 projectile-bookmarks.eld
+projectile.cache
 rake.cache
 helm-doc.org
 recentf
 *.elc
-games

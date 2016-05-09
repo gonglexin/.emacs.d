@@ -43,6 +43,7 @@
     company
     editorconfig
     elixir-mode
+    exec-path-from-shell
     emmet-mode
     flycheck
     flycheck-elixir
@@ -72,6 +73,7 @@
 (require 'core-ui)
 (require 'core-editor)
 (require 'core-keybindings)
+(require 'core-osx)
 (require 'core-projectile)
 (require 'core-helm)
 (require 'core-completion)
