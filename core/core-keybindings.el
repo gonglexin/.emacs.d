@@ -12,6 +12,7 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 (global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-c i") 'helm-imenu)
 
 ;; avy
 (key-chord-define-global "jj" 'avy-goto-word-1)
