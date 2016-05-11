@@ -60,6 +60,7 @@
     restclient
     smartparens
     web-mode
+    which-key
     yasnippet
     zenburn-theme)
   "A list of packages to ensure are installed at launch.")

@@ -1,6 +1,7 @@
 (require 'editorconfig)
 (require 'key-chord)
 (require 'avy)
+(require 'which-key)
 
 ;; enable editorconfig-mode
 (editorconfig-mode 1)
@@ -23,6 +24,7 @@
 
 (key-chord-mode t)
 (avy-setup-default)
+(which-key-mode t)
 
 ;; Always load newest byte code
 (setq load-prefer-newer t)
