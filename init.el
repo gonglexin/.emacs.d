@@ -73,7 +73,6 @@
 
 (require 'core-ui)
 (require 'core-editor)
-(require 'core-keybindings)
 (require 'core-osx)
 (require 'core-projectile)
 (require 'core-helm)
@@ -82,6 +81,7 @@
 (require 'core-ruby)
 (require 'core-elixir)
 (require 'core-web)
+(require 'core-keybindings)
 (require 'core-custom)
 
 (provide 'init)
