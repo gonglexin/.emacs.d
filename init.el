@@ -51,6 +51,7 @@
     helm-ag
     helm-projectile
     inf-ruby
+    js2-mode
     key-chord
     magit
     markdown-mode
@@ -80,6 +81,7 @@
 (require 'core-programming)
 (require 'core-ruby)
 (require 'core-elixir)
+(require 'core-js)
 (require 'core-web)
 (require 'core-keybindings)
 (require 'core-custom)
