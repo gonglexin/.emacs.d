@@ -7,6 +7,8 @@ This settings learned a lot from [Prelude](https://github.com/bbatsov/prelude) a
 ## Requirements
 
 * Emacs 24 or greater.
+* Optional
+  * Git clone [elixir](https://github.com/elixir-lang/elixir) source code to `~/projects/elixir`
 
 ## Installation
 

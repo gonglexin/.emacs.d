@@ -1,6 +1,8 @@
 (require 'smartparens)
 (require 'alchemist)
 
+(setq alchemist-goto-elixir-source-dir "~/projects/elixir/")
+
 (add-hook 'elixir-mode-hook #'smartparens-mode)
 (add-hook 'elixir-mode-hook 'alchemist-mode)
 
