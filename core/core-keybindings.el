@@ -1,4 +1,6 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-M-n") 'scroll-other-window)
+(global-set-key (kbd "C-M-p") 'scroll-other-window-down)
 
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
