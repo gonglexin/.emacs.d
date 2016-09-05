@@ -3,12 +3,13 @@ auto-save-list
 elpa
 eshell
 games
+helm-doc.org
 ido.last
-smex-items
-.cache
 projectile-bookmarks.eld
 projectile.cache
 rake.cache
-helm-doc.org
 recentf
+smex-items
+url
+.cache
 *.elc
