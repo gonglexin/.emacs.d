@@ -3,6 +3,6 @@
 
 (setq ruby-insert-encoding-magic-comment nil)
 (add-hook 'ruby-mode-hook #'smartparens-mode)
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
+(projectile-rails-global-mode)
 
 (provide 'core-ruby)
