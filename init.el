@@ -59,6 +59,8 @@
     projectile
     projectile-rails
     restclient
+    robe
+    ruby-test-mode
     smartparens
     web-mode
     which-key
