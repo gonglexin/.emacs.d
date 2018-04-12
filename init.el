@@ -41,12 +41,14 @@
   '(alchemist
     avy
     company
+    company-go
     editorconfig
     elixir-mode
     exec-path-from-shell
     emmet-mode
     flycheck
     flycheck-elixir
+    go-mode
     helm
     helm-ag
     helm-projectile
@@ -83,6 +85,7 @@
 (require 'core-programming)
 (require 'core-ruby)
 (require 'core-elixir)
+(require 'core-go)
 (require 'core-js)
 (require 'core-web)
 (require 'core-keybindings)
