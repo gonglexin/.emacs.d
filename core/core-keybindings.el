@@ -14,6 +14,7 @@
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "C-c i") 'helm-imenu)
+(global-set-key (kbd "M-p") 'helm-projectile-ag)
 
 ;; avy
 (key-chord-define-global "jj" 'avy-goto-word-1)
