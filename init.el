@@ -42,6 +42,8 @@
     avy
     company
     company-go
+    counsel
+    counsel-projectile
     editorconfig
     elixir-mode
     exec-path-from-shell
@@ -49,9 +51,6 @@
     flycheck
     flycheck-elixir
     go-mode
-    helm
-    helm-ag
-    helm-projectile
     inf-ruby
     js2-mode
     key-chord
@@ -80,7 +79,7 @@
 (require 'core-editor)
 (require 'core-osx)
 (require 'core-projectile)
-(require 'core-helm)
+(require 'core-ivy)
 (require 'core-completion)
 (require 'core-programming)
 (require 'core-ruby)

@@ -8,15 +8,6 @@
 (global-set-key (kbd "C-x M-l") 'magit-log)
 (global-set-key (kbd "C-x M-b") 'magit-blame)
 
-;; Helm
-(global-set-key (kbd "C-c p h") 'helm-projectile)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-c i") 'helm-imenu)
-(global-set-key (kbd "M-p") 'helm-projectile-ag)
-
 ;; avy
 (key-chord-define-global "jj" 'avy-goto-word-1)
 (key-chord-define-global "jl" 'avy-goto-line)
