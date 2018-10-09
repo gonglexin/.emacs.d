@@ -39,21 +39,18 @@
 
 (defvar package-list
   '(alchemist
-    avy
     company
     company-go
     counsel
     counsel-projectile
     editorconfig
     elixir-mode
-    exec-path-from-shell
     emmet-mode
     flycheck
     flycheck-elixir
     go-mode
     inf-ruby
     js2-mode
-    key-chord
     magit
     markdown-mode
     paradox

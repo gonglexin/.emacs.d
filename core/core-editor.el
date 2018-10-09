@@ -1,6 +1,4 @@
 (require 'editorconfig)
-(require 'key-chord)
-(require 'avy)
 (require 'which-key)
 
 ;; enable editorconfig-mode
@@ -22,8 +20,6 @@
 ;; revert buffers automatically when underlying files are changed
 (global-auto-revert-mode t)
 
-(key-chord-mode t)
-(avy-setup-default)
 (which-key-mode t)
 
 ;; Always load newest byte code
