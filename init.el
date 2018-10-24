@@ -46,6 +46,7 @@
     editorconfig
     elixir-mode
     emmet-mode
+    exec-path-from-shell
     flycheck
     flycheck-elixir
     go-mode
