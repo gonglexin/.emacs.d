@@ -4,6 +4,9 @@
 (if (display-graphic-p)
     (toggle-scroll-bar -1))
 
-(load-theme 'zenburn t)
+;(use-package zenburn-theme
+;  :ensure t
+;  :config
+;  (load-theme 'zenburn t))
 
 (provide 'core-ui)
