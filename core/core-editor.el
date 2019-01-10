@@ -1,9 +1,3 @@
-(require 'editorconfig)
-(require 'which-key)
-
-;; enable editorconfig-mode
-(editorconfig-mode 1)
-
 ;; display line number
 (setq linum-format " %d ")
 (global-linum-mode t)
@@ -19,8 +13,6 @@
 
 ;; revert buffers automatically when underlying files are changed
 (global-auto-revert-mode t)
-
-(which-key-mode t)
 
 ;; Always load newest byte code
 (setq load-prefer-newer t)
