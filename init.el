@@ -234,6 +234,29 @@
 
 (use-package docker-compose-mode :ensure t)
 
+;; Org
+(use-package htmlize :ensure t)
+
+(use-package org
+  :ensure t
+  :mode ("\\.org\\'" . org-mode)
+  :bind (("C-c l" . org-store-link)
+         ("C-c c" . org-capture)
+         ("C-c a" . org-agenda)
+         ("C-c C-w" . org-refile)
+         ("C-c j" . org-clock-goto)
+         ("C-c C-x C-o" . org-clock-out))
+  :config
+  (progn
+    (setq org-directory "~/org")
+    (setq org-log-done t)
+    (setq org-agenda-files
+          (mapcar (lambda (path) (concat org-directory path))
+                  '("/work.org"
+                    "/personal.org")))
+    )
+  )
+
 (provide 'init)
 
 ;;; init.el ends here
