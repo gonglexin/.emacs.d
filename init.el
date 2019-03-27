@@ -236,6 +236,7 @@
 
 ;; Org
 (use-package htmlize :ensure t)
+(use-package ob-elixir :ensure t)
 
 (use-package org
   :ensure t
@@ -255,6 +256,12 @@
                   '("/work.org"
                     "/personal.org")))
     )
+   (org-babel-do-load-languages
+    'org-babel-load-languages
+     '((elixir     .t)
+       (emacs-lisp . t)
+       (ruby       . t)
+       (shell      . t)))
   )
 
 (provide 'init)
