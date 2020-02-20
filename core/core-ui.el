@@ -4,9 +4,9 @@
 (if (display-graphic-p)
     (toggle-scroll-bar -1))
 
-;(use-package zenburn-theme
-;  :ensure t
-;  :config
-;  (load-theme 'zenburn t))
+(use-package dracula-theme
+  :ensure t
+  :config
+  (load-theme 'dracula t))
 
 (provide 'core-ui)

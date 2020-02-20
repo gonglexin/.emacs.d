@@ -109,7 +109,8 @@
   :init (global-company-mode)
   :diminish company-mode
   :config
-  (setq company-idle-delay 0.3)
+  (setq company-idle-delay 0)
+  (setq company-show-numbers t)
   (setq company-tooltip-limit 10)
   (setq company-minimum-prefix-length 2)
   (setq company-tooltip-flip-when-above t))
@@ -126,10 +127,10 @@
   :config
   (add-to-list 'eglot-server-programs '(elixir-mode "/Users/gonglexin/projects/elixir-ls/release/language_server.sh")))
 
-;(use-package flycheck
-;   :ensure t
-;   :config
-;   (add-hook 'prog-mode-hook 'flycheck-mode))
+(use-package flycheck
+   :ensure t
+   :config
+   (add-hook 'prog-mode-hook 'flycheck-mode))
 
 ;(use-package yasnippet
 ;  :ensure t
@@ -263,6 +264,11 @@
        (ruby       . t)
        (shell      . t)))
   )
+
+(use-package wakatime-mode
+  :ensure t
+  :init
+  (global-wakatime-mode t))
 
 (provide 'init)
 
