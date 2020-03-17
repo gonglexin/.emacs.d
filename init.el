@@ -28,12 +28,15 @@
 ;;; Code:
 
 (require 'package)
+
+;(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 (setq package-enable-at-startup nil)
 ;(setq package-archives '(("gnu"   . "https://elpa.gnu.org/packages/")
 ;                         ("melpa" . "https://melpa.org/packages/")))
 
-(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-                         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+(setq package-archives '(("gnu"   . "https://elpa.emacs-china.org/gnu/")
+                         ("melpa" . "https://elpa.emacs-china.org/melpa/")))
 
 (package-initialize)
 
@@ -48,6 +51,7 @@
 (require 'core-editor)
 (require 'core-osx)
 
+(use-package spinner :ensure t)
 (use-package diminish :ensure t)
 (use-package paradox :ensure t)
 
@@ -109,23 +113,58 @@
   :init (global-company-mode)
   :diminish company-mode
   :config
-  (setq company-idle-delay 0)
+  (setq company-idle-delay 0.0)
   (setq company-show-numbers t)
   (setq company-tooltip-limit 10)
-  (setq company-minimum-prefix-length 2)
+  (setq company-minimum-prefix-length 1)
   (setq company-tooltip-flip-when-above t))
 
 ;; Programming
 
 ;; https://elixirforum.com/t/emacs-elixir-setup-configuration-wiki/19196
-(use-package eglot
+;; (use-package eglot
+;;   :ensure t
+;;   :hook
+;;   (elixir-mode . eglot-ensure)
+;;   :bind (("C-c h" . eglot-help-at-point)
+;;          ("C-c x" . xref-find-definitions))
+;;   :config
+;;   (add-to-list 'eglot-server-programs '(elixir-mode "/Users/gonglexin/projects/elixir-ls/release/language_server.sh")))
+
+(use-package lsp-mode
   :ensure t
-  :hook
-  (elixir-mode . eglot-ensure)
-  :bind (("C-c h" . eglot-help-at-point)
-         ("C-c x" . xref-find-definitions))
-  :config
-  (add-to-list 'eglot-server-programs '(elixir-mode "/Users/gonglexin/projects/elixir-ls/release/language_server.sh")))
+  :init (setq lsp-keymap-prefix "C-c C-c")
+  :commands lsp
+  :diminish lsp-mode
+  :hook ((prog-mode . lsp)
+         (lsp-mode . lsp-enable-which-key-integration))
+  :init (add-to-list 'exec-path "/Users/gonglexin/projects/elixir-ls/release"))
+
+(use-package lsp-ui
+  :after (lsp-mode)
+  :ensure t
+  :commands lsp-ui-mode)
+
+(use-package company-lsp
+  :ensure t
+  :commands company-lsp)
+
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+(use-package dap-mode
+  :ensure t)
+
+(with-eval-after-load 'lsp-mode
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
+
+;; https://github.com/emacs-lsp/lsp-mode#performance
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
+(setq lsp-prefer-capf t)
+(setq lsp-idle-delay 0.500)
+
 
 (use-package flycheck
    :ensure t
